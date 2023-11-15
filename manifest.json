@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "version": "1.0",
+  "background": {
+    "scripts": ["background/background.js"]
+  },
+  "description": "__MSG_extensionDescription__",
+  "name": "Bookmarks test",
+  "permissions": ["bookmarks"],
+  "applications": {
+    "gecko": {
+      "id": "bookmarks-test@crisal.io"
+    }
+  }
+}
