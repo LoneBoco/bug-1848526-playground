@@ -14,18 +14,30 @@
   });
   */
 
-  let node = await browser.bookmarks.create({
+  await browser.bookmarks.create({
     parentId: folder.id,
-    title: "Example child",
-    url: "https://mozilla.org",
+    title: "⚫  Assassin's Creed Nexus comes out tomorrow and I see nothing about it? No reviews. No gamplay. No nothing. For a big release like this it feels very weird.",
+    url: "https://mozilla.org"
   });
 
+  let children = [];
+
+  for (let i = 0; i < 20; ++i) {
+    children[i] = await browser.bookmarks.create({
+      parentId: folder.id,
+      title: "Example child",
+      url: "https://mozilla.org",
+    });
+  }
+
   console.log(folder);
-  console.log(node);
+  //console.log(node);
 
   setInterval(function() {
-    let length = Math.floor(Math.random() * 200);
-    let title = "a".repeat(length);
-    browser.bookmarks.update(node.id, { title });
-  }, 1000);
+    children.forEach((c) => {
+      let length = Math.floor(Math.random() * 80);
+      let title = "a".repeat(length);
+      browser.bookmarks.update(c.id, { title });
+    });
+  }, 10000);
 })();
